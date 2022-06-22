@@ -1,0 +1,31 @@
+{
+    "name": "Mimikatz has been blocked",
+    "id": "D.AV.1",
+    "type": "Defense Technique",
+    "system": "Antivirus",
+    "description": "detection description",
+    "tags": ["DEV: Hunters", "Credential Access"],
+    "created": "2022-03-13", 
+    "references": ["http://cvesite.com"],
+    "detects": {
+        "T1003": {
+            "accuracy": "high"
+        }
+    },
+    "severity": "critical",
+    "fpratio": 0,
+    "uses": ["Process: Process Access"],
+    "scope": {
+        "countries": [
+            "Germany"
+        ],
+        "clients": [
+            "Client-E", "Client-F"
+        ],
+        "systems":[
+            "windows"
+        ]
+    },
+    "intid": 1,
+    "filename": "Mimikatz-has-been-blocked.json"
+}

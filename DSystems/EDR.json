@@ -1,0 +1,13 @@
+{
+    "id": "EDR",
+    "type": "Defense System",
+    "name": "Endpoint Detection and Response",
+    "description": "",
+    "top_id": 0,
+    "data_sources": [
+        "Process",
+        "File",
+        "Command",
+        "Windows Registry"
+    ]
+}

@@ -1,0 +1,34 @@
+{
+    "name": "Suspicious series of login attempts",
+    "id": "D.EDR.2",
+    "type": "Defense Technique",
+    "system": "Endpoint Detection and Response",
+    "description": "detection description",
+    "tags": ["DEV: Hunters", "Credential Access"],
+    "created": "2022-03-13", 
+    "references": ["http://researchpapers.com/art/2022/03/research-on-keylogging.html"],
+    "detects": {
+        "T1110.003": {
+            "accuracy": "medium"
+        },
+        "T1110.001": {
+            "accuracy": "medium"
+        }
+    },
+    "severity": "medium",
+    "fpratio": 0.33,
+    "uses": ["User Account: User Account Authentication"],
+    "scope": {
+        "countries": [
+            "Poland", "Brazil", "Japan"
+        ],
+        "clients": [
+            "Client-E", "Client-F"
+        ],
+        "systems":[
+            "windows"
+        ]
+    },
+    "intid": 2,
+    "filename": "Suspicious-series-of-login-attempts.json"
+}

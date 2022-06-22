@@ -1,0 +1,31 @@
+{
+    "name": "Data exfiltration from leaver",
+    "id": "D.ELSTC.1",
+    "type": "Defense Technique",
+    "system": "Elastic Search",
+    "description": "Significant amount of data has been trasfered to unusual endpoint",
+    "tags": ["DEV: OtherHunters"],
+    "created": "2021-02-11", 
+    "references": ["http://c24life.com"],
+    "detects": {
+        "T1041": {
+            "accuracy": "low"
+        }
+    },
+    "severity": "medium",
+    "fpratio": 0.8,
+    "uses": ["Network Traffic: Network Traffic Flow"],
+    "scope": {
+        "countries": [
+            "Poland", "Germany", "China"
+        ],
+        "clients": [
+            "Client-C", "Client-E"
+        ],
+        "systems":[
+            "windows", "linux"
+        ]
+    },
+    "intid": 1,
+    "filename": "Data-exfiltration-from-leaver.json"
+}

@@ -1,0 +1,10 @@
+{
+    "id": "CHKPNT",
+    "type": "Defense System",
+    "name": "Checkpaint Perimiter Firewall",
+    "description": "I protect what must be protected",
+    "top_id": 0,
+    "data_sources": [
+        "Network Traffic"
+    ]
+}

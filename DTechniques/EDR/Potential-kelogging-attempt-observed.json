@@ -1,0 +1,31 @@
+{
+    "name": "Potential kelogging attempt observed",
+    "id": "D.EDR.1",
+    "type": "Defense Technique",
+    "system": "Endpoint Detection and Response",
+    "description": "desc",
+    "tags": ["DEV: "],
+    "created": "2022-05-01", 
+    "references": ["http://researchpapers.com/art/2022/03/research-on-keylogging.html"],
+    "detects": {
+        "T1056.001": {
+            "accuracy": "high"
+        }
+    },
+    "severity": "high",
+    "fpratio": 0.1,
+    "uses": ["Process: Process Creation"],
+    "scope": {
+        "countries": [
+            "Poland", "Germany", "China"
+        ],
+        "clients": [
+            "Client-A", "Client-D"
+        ],
+        "systems":[
+            "windows", "linux"
+        ]
+    },
+    "intid": 1,
+    "filename": "Potential-kelogging-attempt-observed.json"
+}

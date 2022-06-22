@@ -1,0 +1,10 @@
+{
+    "id": "AV",
+    "type": "Defense System",
+    "name": "Antivirus McSpersky",
+    "description": "Best AV solution",
+    "top_id": 0,
+    "data_sources": [
+        "File"
+    ]
+}

@@ -1,0 +1,10 @@
+{
+    "id": "DS.ELSTC",
+    "type": "Defense System",
+    "name": "Elastic Search with proxy logs",
+    "description": "",
+    "top_id": 0,
+    "data_sources": [
+        "Network Traffic"
+    ]
+}

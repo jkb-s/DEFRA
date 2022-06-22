@@ -1,0 +1,31 @@
+{
+    "name": "CVE20210321-signature",
+    "id": "D.CHKPNT.1",
+    "type": "Defense Technique",
+    "system": "Endpoint Detection and Response",
+    "description": "detection description",
+    "tags": ["DEV: Hunters", "Credential Access"],
+    "created": "2022-03-13", 
+    "references": ["http://cvesite.com"],
+    "detects": {
+        "T1190": {
+            "accuracy": "high"
+        }
+    },
+    "severity": "critical",
+    "fpratio": 0.01,
+    "uses": ["Network Traffic: Network Traffic Content"],
+    "scope": {
+        "countries": [
+            "Poland"
+        ],
+        "clients": [
+            "Client-A", "Client-B", "Client-C", "Client-D"
+        ],
+        "systems":[
+            "windows", "linux"
+        ]
+    },
+    "intid": 1,
+    "filename": "Suspicious-series-of-login-attempts.json"
+}
