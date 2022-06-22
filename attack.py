@@ -76,12 +76,18 @@ class Attack:
                 return ref['external_id']
         return None
 
-    def __init__(self, version=None):
+    def __init__(self, version=None, save=False, local=False):
         self.load_config()                         # creates self.cfg
-        if not version:
-            self.download_attack(self.cfg.attack_data) # creates self.attack
+        
+        if local:
+            self.load_attack()
+
         else:
-            self.download_attack(self.cfg.attack_data_versions[version])
+            if not version:
+                self.download_attack(self.cfg.attack_data) # creates self.attack
+            else:
+                self.download_attack(self.cfg.attack_data_versions[version])
+
         self.collect_objects()                     # creates self.collections
         self.parse_techniques()
         self.parse_groups()
@@ -93,6 +99,9 @@ class Attack:
         self.parse_mitigations()
         self.make_indices()
 
+        if save:
+            self.save_attack()
+
     def load_config(self, filename='config.json'):
         with open(filename, 'r') as file:
             data = SimpleNamespace(**loads(file.read()))
@@ -103,6 +112,17 @@ class Attack:
         response = get(url)
         if response.ok:
             self.attack = response.json()
+
+    def load_attack(self):
+        filename = self.cfg.attack_filename
+        with open(filename, 'r') as file:
+            self.attack = loads(file.read())
+            file.close()
+
+    def save_attack(self):
+        filename = self.cfg.attack_filename
+        with open(filename, 'w') as file:
+            file.write(dumps(self.attack))
 
     def collect_objects(self):
         self.collections = {}
