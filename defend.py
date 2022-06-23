@@ -12,7 +12,6 @@ class JSON:
         return self.__dict__
 
 
-
 @dataclass
 class DTechnique(JSON):
     id: str
@@ -80,6 +79,9 @@ class Defend:
         self.load_defense_techniques()                    # self.techniques
         self.index_techniques_per_system()                # self.techniques_per_system
         self.index_techniques_per_scope()                 # self.techniques_per_scope
+        self.index_techniques_per_attack_techniques()     # self.techniques_per_attack_techniques
+        self.index_techniques_per_severity()              # self.techniques_per_severity
+        self.index_techniques_per_datasource()            # self.techniques_per_datasource
 
     def load_defense_systems(self):
         self.systems = {}
@@ -135,3 +137,46 @@ class Defend:
                         })
                     else:
                         self.techniques_per_scope[key][value].append(tech)
+
+    def index_techniques_per_attack_techniques(self):
+        self.techniques_per_attack_techniques = {}
+        for dtech in self.techniques:   
+            for atech in self.techniques[dtech].detects:
+                if atech not in self.techniques_per_attack_techniques:
+                    self.techniques_per_attack_techniques.update({
+                        atech: [dtech]
+                    })
+                else:
+                    self.techniques_per_attack_techniques[atech].append(dtech)
+
+    def index_techniques_per_severity(self):
+        self.techniques_per_severity = {}
+        for dtech in self.techniques:
+            if self.techniques[dtech].severity not in self.techniques_per_severity:
+                self.techniques_per_severity.update({
+                    self.techniques[dtech].severity : [dtech]
+                })
+            else:
+                self.techniques_per_severity[
+                    self.techniques[dtech].severity
+                ].append(dtech)
+
+    def index_techniques_per_datasource(self):
+        self.techniques_per_datasource = {}
+        for dtech in self.techniques:
+            for datacomponent in self.techniques[dtech].uses:
+                data_source = datacomponent.split(': ')[0]
+                data_component = datacomponent.split(': ')[1]
+            
+                if data_source not in self.techniques_per_datasource:
+                    self.techniques_per_datasource.update({
+                        data_source: { data_component: [dtech] }
+                    })
+                else:
+                    if data_component not in self.techniques_per_datasource[data_source]:
+                        self.techniques_per_datasource[data_source].update({
+                            data_component: [dtech]
+                        })
+                    else:
+                        self.techniques_per_datasource[data_source][data_component].append(dtech)
+
