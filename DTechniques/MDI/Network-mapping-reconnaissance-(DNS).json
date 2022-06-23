@@ -1,0 +1,48 @@
+{
+    "id": "D.MDI.2007",
+    "name": "Network-mapping reconnaissance (DNS)",
+    "system": "Microsoft Defender for Identity",
+    "type": "Defense Technique",
+    "intid": 2007,
+    "filename": "Network-mapping-reconnaissance-(DNS).json",
+    "description": "Your DNS server contains a map of all the computers, IP addresses, and services in your network. This information is used by attackers to map your network structure and target interesting computers for later steps in their attack. There are several query types in the DNS protocol. This Defender for Identity security alert detects suspicious requests, either requests using an AXFR (transfer) originating from non-DNS servers, or those using an excessive number of requests.",
+    "created": "2022-05-01",
+    "severity": "medium",
+    "fpratio": 0.3,
+    "tags": [
+        "DEV: ",
+        "Discovery"
+    ],
+    "references": [
+        "http://researchpapers.com/art/2022/03/research-on-keylogging.html"
+    ],
+    "detects": {
+        "T1087": {
+            "accuracy": "medium"
+        },
+        "T1046": {
+            "accuracy": "medium"
+        },
+        "T1018": {
+            "accuracy": "medium"
+        }
+    },
+    "uses": [
+        "Network Traffic: Network Traffic Content"
+    ],
+    "scope": {
+        "countries": [
+            "Poland",
+            "Germany",
+            "China"
+        ],
+        "clients": [
+            "Client-A",
+            "Client-D"
+        ],
+        "systems": [
+            "windows",
+            "linux"
+        ]
+    }
+}

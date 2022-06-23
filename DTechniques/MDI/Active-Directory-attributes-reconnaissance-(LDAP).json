@@ -1,0 +1,48 @@
+{
+    "id": "D.MDI.2210",
+    "name": "Active Directory attributes reconnaissance (LDAP)",
+    "system": "Microsoft Defender for Identity",
+    "type": "Defense Technique",
+    "intid": 2210,
+    "filename": "Active-Directory-attributes-reconnaissance-(LDAP).json",
+    "description": "Active Directory LDAP reconnaissance is used by attackers to gain critical information about the domain environment. This information can help attackers map the domain structure, as well as identify privileged accounts for use in later steps in their attack kill chain. Lightweight Directory Access Protocol (LDAP) is one of the most popular methods used for both legitimate and malicious purposes to query Active Directory.",
+    "created": "2022-05-01",
+    "severity": "medium",
+    "fpratio": 0.3,
+    "tags": [
+        "DEV: ",
+        "Discovery"
+    ],
+    "references": [
+        "http://researchpapers.com/art/2022/03/research-on-keylogging.html"
+    ],
+    "detects": {
+        "T1087.002": {
+            "accuracy": "medium"
+        },
+        "T1069.002": {
+            "accuracy": "medium"
+        },
+        "T1202": {
+            "accuracy": "medium"
+        }
+    },
+    "uses": [
+        "Active Directory: Active Directory Object Access"
+    ],
+    "scope": {
+        "countries": [
+            "Poland",
+            "Germany",
+            "China"
+        ],
+        "clients": [
+            "Client-A",
+            "Client-D"
+        ],
+        "systems": [
+            "windows",
+            "linux"
+        ]
+    }
+}

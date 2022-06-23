@@ -1,0 +1,41 @@
+{
+    "id": "D.MDI.2003",
+    "name": "Account enumeration reconnaissance",
+    "system": "Microsoft Defender for Identity",
+    "type": "Defense Technique",
+    "intid": 2003,
+    "filename": "Account-enumeration-reconnaissance.json",
+    "description": "In account enumeration reconnaissance, an attacker uses a dictionary with thousands of user names, or tools such as KrbGuess in an attempt to guess user names in the domain. Kerberos: Attacker makes Kerberos requests using these names to try to find a valid username in the domain. When a guess successfully determines a username, the attacker gets the Preauthentication required instead of Security principal unknown Kerberos error. NTLM: Attacker makes NTLM authentication requests using the dictionary of names to try to find a valid username in the domain. If a guess successfully determines a username, the attacker gets the WrongPassword (0xc000006a) instead of NoSuchUser (0xc0000064) NTLM error. In this alert detection, Defender for Identity detects where the account enumeration attack came from, the total number of guess attempts, and how many attempts were matched. If there are too many unknown users, Defender for Identity detects it as a suspicious activity. The alert is based on authentication events from sensors running on domain controller and AD FS servers.",
+    "created": "2022-05-01",
+    "severity": "medium",
+    "fpratio": 0.3,
+    "tags": [
+        "DEV: "
+    ],
+    "references": [
+        "http://researchpapers.com/art/2022/03/research-on-keylogging.html"
+    ],
+    "detects": {
+        "T1087.002": {
+            "accuracy": "medium"
+        }
+    },
+    "uses": [
+        "Active Directory: Active Directory Credential Request"
+    ],
+    "scope": {
+        "countries": [
+            "Poland",
+            "Germany",
+            "China"
+        ],
+        "clients": [
+            "Client-A",
+            "Client-D"
+        ],
+        "systems": [
+            "windows",
+            "linux"
+        ]
+    }
+}

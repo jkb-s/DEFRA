@@ -1,0 +1,45 @@
+{
+    "id": "D.MDI.2021",
+    "name": "User and Group membership reconnaissance (SAMR)",
+    "system": "Microsoft Defender for Identity",
+    "type": "Defense Technique",
+    "intid": 2021,
+    "filename": "User-and-Group-membership-reconnaissance-(SAMR).json",
+    "description": "User and group membership\u202freconnaissance are used by attackers to map the directory structure and target privileged accounts for later steps in their attack. The Security Account Manager Remote (SAM-R) protocol is one of the methods used to query the directory to perform this type of mapping. In this detection, no alerts are triggered in the first month after Defender for Identity is deployed (learning period). During the learning period, Defender for Identity profiles which SAM-R queries are made from which computers, both enumeration and individual queries of sensitive accounts.",
+    "created": "2022-05-01",
+    "severity": "medium",
+    "fpratio": 0.3,
+    "tags": [
+        "Discovery"
+    ],
+    "references": [
+        "http://researchpapers.com/art/2022/03/research-on-keylogging.html"
+    ],
+    "detects": {
+        "T1087.002": {
+            "accuracy": "medium"
+        },
+        "T1069.002": {
+            "accuracy": "medium"
+        }
+    },
+    "uses": [
+        "Network Traffic: Network Traffic Content",
+        "Active Directory: Active Directory Object Access"
+    ],
+    "scope": {
+        "countries": [
+            "Poland",
+            "Germany",
+            "China"
+        ],
+        "clients": [
+            "Client-A",
+            "Client-D"
+        ],
+        "systems": [
+            "windows",
+            "linux"
+        ]
+    }
+}
