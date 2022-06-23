@@ -78,6 +78,8 @@ class Defend:
         # init functions
         self.load_defense_systems()                       # self.systems
         self.load_defense_techniques()                    # self.techniques
+        self.index_techniques_per_system()                # self.techniques_per_system
+        self.index_techniques_per_scope()                 # self.techniques_per_scope
 
     def load_defense_systems(self):
         self.systems = {}
@@ -106,3 +108,30 @@ class Defend:
                         self.techniques.update({
                             data['id']: DTechnique(**data)
                         })
+
+    def index_techniques_per_system(self):
+        self.techniques_per_system = {}
+        for tech in self.techniques:
+            sys = tech.split('.')[1]
+            if sys not in self.techniques_per_system:
+                self.techniques_per_system.update({
+                    sys : [tech]
+                })
+            else:
+                self.techniques_per_system[sys].append(tech)
+    
+    def index_techniques_per_scope(self):
+        self.techniques_per_scope = {}
+        for tech in self.techniques:
+            dtech = self.techniques[tech]
+            for key in dtech.scope:
+                if key not in self.techniques_per_scope:
+                    self.techniques_per_scope.update({key: {}})
+                    
+                for value in dtech.scope[key]:
+                    if value not in self.techniques_per_scope[key]:
+                        self.techniques_per_scope[key].update({
+                            value: [tech]
+                        })
+                    else:
+                        self.techniques_per_scope[key][value].append(tech)
