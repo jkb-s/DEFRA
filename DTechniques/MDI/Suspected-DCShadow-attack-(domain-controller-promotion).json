@@ -1,0 +1,41 @@
+{
+    "id": "D.MDI.2028",
+    "name": "Suspected DCShadow attack (domain controller promotion)",
+    "system": "Microsoft Defender for Identity",
+    "type": "Defense Technique",
+    "intid": 2028,
+    "filename": "Suspected-DCShadow-attack-(domain-controller-promotion).json",
+    "description": "A domain controller shadow (DCShadow) attack is an attack designed to change directory objects using malicious replication. This attack can be performed from any machine by creating a rogue domain controller using a replication process. In a DCShadow attack, RPC, and LDAP are used to: Register the machine account as a domain controller (using domain admin rights). Perform replication (using the granted replication rights) over DRSUAPI and send changes to directory objects. In this Defender for Identity detection, a security alert is triggered when a machine in the network tries to register as a rogue domain controller.",
+    "created": "2022-05-01",
+    "severity": "high",
+    "fpratio": 0.5,
+    "tags": [
+        "Defense Evasion"
+    ],
+    "references": [
+        "http://researchpapers.com/art/2022/03/research-on-keylogging.html"
+    ],
+    "detects": {
+        "T1207": {
+            "accuracy": "medium"
+        }
+    },
+    "uses": [
+        "Network Traffic: Network Traffic Content"
+    ],
+    "scope": {
+        "countries": [
+            "Poland",
+            "Germany",
+            "China"
+        ],
+        "clients": [
+            "Client-A",
+            "Client-D"
+        ],
+        "systems": [
+            "windows",
+            "linux"
+        ]
+    }
+}

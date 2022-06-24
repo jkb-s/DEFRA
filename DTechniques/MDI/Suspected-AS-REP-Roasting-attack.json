@@ -1,0 +1,41 @@
+{
+    "id": "D.MDI.2412",
+    "name": "Suspected-AS-REP-Roasting-attack",
+    "system": "Microsoft Defender for Identity",
+    "type": "Defense Technique",
+    "intid": 2412,
+    "filename": "Suspected-AS-REP-Roasting-attack.json",
+    "description": "Attackers use tools to detect accounts with their Kerberos preauthentication disabled and send AS-REQ requests without the encrypted timestamp. In response they receive AS-REP messages with TGT data, which may be encrypted with an insecure algorithm such as RC4, and save them for later use in an offline password cracking attack (similar to Kerberoasting) and expose plaintext credentials.",
+    "created": "2022-05-01",
+    "severity": "medium",
+    "fpratio": 0.5,
+    "tags": [
+        "Credential Access"
+    ],
+    "references": [
+        "http://researchpapers.com/art/2022/03/research-on-keylogging.html"
+    ],
+    "detects": {
+        "T1558.004": {
+            "accuracy": "high"
+        }
+    },
+    "uses": [
+        "Network Traffic: Network Traffic Content"
+    ],
+    "scope": {
+        "countries": [
+            "Poland",
+            "Germany",
+            "China"
+        ],
+        "clients": [
+            "Client-A",
+            "Client-D"
+        ],
+        "systems": [
+            "windows",
+            "linux"
+        ]
+    }
+}

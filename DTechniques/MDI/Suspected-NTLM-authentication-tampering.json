@@ -1,0 +1,45 @@
+{
+    "id": "D.MDI.2039",
+    "name": "Suspected NTLM authentication tampering",
+    "system": "Microsoft Defender for Identity",
+    "type": "Defense Technique",
+    "intid": 2039,
+    "filename": "Suspected-NTLM-authentication-tampering.json",
+    "description": "In June 2019, Microsoft published Security Vulnerability CVE-2019-1040, announcing discovery of a new tampering vulnerability in Microsoft Windows, when a man-in-the-middle attack is able to successfully bypass NTLM MIC (Message Integrity Check) protection. Malicious actors that successfully exploit this vulnerability have the ability to downgrade NTLM security features, and may successfully create authenticated sessions on behalf of other accounts. Unpatched Windows Servers are at risk from this vulnerability. In this detection, a Defender for Identity security alert is triggered when NTLM authentication requests suspected of exploiting security vulnerability identified in CVE-2019-1040 are made against a domain controller in the network.",
+    "created": "2022-05-01",
+    "severity": "high",
+    "fpratio": 0.5,
+    "tags": [
+        "Lateral Movement",
+        "Privilege Escalation"
+    ],
+    "references": [
+        "http://researchpapers.com/art/2022/03/research-on-keylogging.html"
+    ],
+    "detects": {
+        "T1210": {
+            "accuracy": "high"
+        },
+        "T1068": {
+            "accuracy": "high"
+        }
+    },
+    "uses": [
+        "Network Traffic: Network Traffic Content"
+    ],
+    "scope": {
+        "countries": [
+            "Poland",
+            "Germany",
+            "China"
+        ],
+        "clients": [
+            "Client-A",
+            "Client-D"
+        ],
+        "systems": [
+            "windows",
+            "linux"
+        ]
+    }
+}

@@ -1,0 +1,47 @@
+{
+    "id": "D.MDI.2002",
+    "name": "Suspected overpass-the-hash attack (Kerberos)",
+    "system": "Microsoft Defender for Identity",
+    "type": "Defense Technique",
+    "intid": 2002,
+    "filename": "Suspected-overpass-the-hash-attack-(Kerberos).json",
+    "description": "Attackers use tools that implement various protocols such as Kerberos and SMB in non-standard ways. While Microsoft Windows accepts this type of network traffic without warnings, Defender for Identity is able to recognize potential malicious intent. The behavior is indicative of techniques such as over-pass-the-hash, Brute Force, and advanced ransomware exploits such as WannaCry, are used.",
+    "created": "2022-05-01",
+    "severity": "high",
+    "fpratio": 0.5,
+    "tags": [
+        "Lateral Movement"
+    ],
+    "references": [
+        "http://researchpapers.com/art/2022/03/research-on-keylogging.html"
+    ],
+    "detects": {
+        "T1557.002": {
+            "accuracy": "high"
+        },
+        "T1557.003": {
+            "accuracy": "high"
+        },
+        "T1210": {
+            "accuracy": "medium"
+        }
+    },
+    "uses": [
+        "Network Traffic: Network Traffic Content"
+    ],
+    "scope": {
+        "countries": [
+            "Poland",
+            "Germany",
+            "China"
+        ],
+        "clients": [
+            "Client-A",
+            "Client-D"
+        ],
+        "systems": [
+            "windows",
+            "linux"
+        ]
+    }
+}

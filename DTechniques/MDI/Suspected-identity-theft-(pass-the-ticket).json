@@ -1,0 +1,41 @@
+{
+    "id": "D.MDI.2018",
+    "name": "Suspected identity theft (pass-the-ticket)",
+    "system": "Microsoft Defender for Identity",
+    "type": "Defense Technique",
+    "intid": 2018,
+    "filename": "Suspected-identity-theft-(pass-the-ticket).json",
+    "description": "Pass-the-Ticket is a lateral movement technique in which attackers steal a Kerberos ticket from one computer and use it to gain access to another computer by reusing the stolen ticket. In this detection, a Kerberos ticket is seen used on two (or more) different computers.",
+    "created": "2022-05-01",
+    "severity": "high",
+    "fpratio": 0.5,
+    "tags": [
+        "Lateral Movement"
+    ],
+    "references": [
+        "http://researchpapers.com/art/2022/03/research-on-keylogging.html"
+    ],
+    "detects": {
+        "T1550.003": {
+            "accuracy": "high"
+        }
+    },
+    "uses": [
+        "Network Traffic: Network Traffic Content"
+    ],
+    "scope": {
+        "countries": [
+            "Poland",
+            "Germany",
+            "China"
+        ],
+        "clients": [
+            "Client-A",
+            "Client-D"
+        ],
+        "systems": [
+            "windows",
+            "linux"
+        ]
+    }
+}

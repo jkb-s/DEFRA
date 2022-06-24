@@ -1,0 +1,44 @@
+{
+    "id": "D.MDI.2033",
+    "name": "Suspected Brute Force attack (SMB)",
+    "system": "Microsoft Defender for Identity",
+    "type": "Defense Technique",
+    "intid": 2033,
+    "filename": "Suspected-Brute-Force-attack-(SMB).json",
+    "description": "Attackers use tools that implement various protocols such as SMB, Kerberos, and NTLM in non-standard ways. While this type of network traffic is accepted by Windows without warnings, Defender for Identity is able to recognize potential malicious intent. The behavior is indicative of brute force techniques.",
+    "created": "2022-05-01",
+    "severity": "medium",
+    "fpratio": 0.5,
+    "tags": [
+        "Lateral Movement"
+    ],
+    "references": [
+        "http://researchpapers.com/art/2022/03/research-on-keylogging.html"
+    ],
+    "detects": {
+        "T1110.001": {
+            "accuracy": "high"
+        },
+        "T1110.003": {
+            "accuracy": "high"
+        }
+    },
+    "uses": [
+        "Network Traffic: Network Connection Creation"
+    ],
+    "scope": {
+        "countries": [
+            "Poland",
+            "Germany",
+            "China"
+        ],
+        "clients": [
+            "Client-A",
+            "Client-D"
+        ],
+        "systems": [
+            "windows",
+            "linux"
+        ]
+    }
+}

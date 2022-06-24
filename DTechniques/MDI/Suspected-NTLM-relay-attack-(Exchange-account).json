@@ -1,0 +1,48 @@
+{
+    "id": "D.MDI.2037",
+    "name": "Suspected NTLM relay attack (Exchange account)",
+    "system": "Microsoft Defender for Identity",
+    "type": "Defense Technique",
+    "intid": 2037,
+    "filename": "Suspected-NTLM-relay-attack-(Exchange-account).json",
+    "description": "An Exchange Server can be configured to trigger NTLM authentication with the Exchange Server account to a remote http server, run by an attacker. The server waits for the Exchange Server communication to relay its own sensitive authentication to any other server, or even more interestingly to Active Directory over LDAP, and grabs the authentication information. Once the relay server receives the NTLM authentication, it provides a challenge that was originally created by the target server. The client responds to the challenge, preventing an attacker from taking the response, and using it to continue NTLM negotiation with the target domain controller. In this detection, an alert is triggered when Defender for Identity identify use of Exchange account credentials from a suspicious source.",
+    "created": "2022-05-01",
+    "severity": "high",
+    "fpratio": 0.5,
+    "tags": [
+        "Lateral Movement",
+        "Privilege Escalation"
+    ],
+    "references": [
+        "http://researchpapers.com/art/2022/03/research-on-keylogging.html"
+    ],
+    "detects": {
+        "T1557.001": {
+            "accuracy": "high"
+        },
+        "T1210": {
+            "accuracy": "medium"
+        },
+        "T1068": {
+            "accuracy": "medium"
+        }
+    },
+    "uses": [
+        "Network Traffic: Network Traffic Content"
+    ],
+    "scope": {
+        "countries": [
+            "Poland",
+            "Germany",
+            "China"
+        ],
+        "clients": [
+            "Client-A",
+            "Client-D"
+        ],
+        "systems": [
+            "windows",
+            "linux"
+        ]
+    }
+}

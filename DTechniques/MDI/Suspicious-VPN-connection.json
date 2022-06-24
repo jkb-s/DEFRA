@@ -1,0 +1,42 @@
+{
+    "id": "D.MDI.2025",
+    "name": "Suspicious VPN connection",
+    "system": "Microsoft Defender for Identity",
+    "type": "Defense Technique",
+    "intid": 2025,
+    "filename": "Suspicious-VPN-connection.json",
+    "description": "Defender for Identity learns the entity behavior for users VPN connections over a sliding period of one month. The VPN-behavior model is based on the machines users log in to and the locations the users connect from. An alert is opened when there is a deviation from the user's behavior based on a machine learning algorithm.",
+    "created": "2022-05-01",
+    "severity": "high",
+    "fpratio": 0.5,
+    "tags": [
+        "Defense Evasion",
+        "Persistence"
+    ],
+    "references": [
+        "http://researchpapers.com/art/2022/03/research-on-keylogging.html"
+    ],
+    "detects": {
+        "T1133": {
+            "accuracy": "medium"
+        }
+    },
+    "uses": [
+        "Network Traffic: Network Connection Creation"
+    ],
+    "scope": {
+        "countries": [
+            "Poland",
+            "Germany",
+            "China"
+        ],
+        "clients": [
+            "Client-A",
+            "Client-D"
+        ],
+        "systems": [
+            "windows",
+            "linux"
+        ]
+    }
+}

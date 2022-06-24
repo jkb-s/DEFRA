@@ -1,0 +1,41 @@
+{
+    "id": "D.MDI.2034",
+    "name": "Suspected use of Metasploit hacking framework",
+    "system": "Microsoft Defender for Identity",
+    "type": "Defense Technique",
+    "intid": 2034,
+    "filename": "Suspected-use-of-Metasploit-hacking-framework.json",
+    "description": "Attackers use tools that implement various protocols (SMB, Kerberos, NTLM) in non-standard ways. While this type of network traffic is accepted by Windows without warnings, Defender for Identity is able to recognize potential malicious intent. The behavior is indicative of techniques such as use of the Metasploit hacking framework.",
+    "created": "2022-05-01",
+    "severity": "high",
+    "fpratio": 0.5,
+    "tags": [
+        "Lateral Movement"
+    ],
+    "references": [
+        "http://researchpapers.com/art/2022/03/research-on-keylogging.html"
+    ],
+    "detects": {
+        "T1210": {
+            "accuracy": "low"
+        }
+    },
+    "uses": [
+        "Network Traffic: Network Traffic Content"
+    ],
+    "scope": {
+        "countries": [
+            "Poland",
+            "Germany",
+            "China"
+        ],
+        "clients": [
+            "Client-A",
+            "Client-D"
+        ],
+        "systems": [
+            "windows",
+            "linux"
+        ]
+    }
+}

@@ -1,0 +1,49 @@
+{
+    "id": "D.MDI.2027",
+    "name": "Suspected Golden Ticket usage (nonexistent account)",
+    "system": "Microsoft Defender for Identity",
+    "type": "Defense Technique",
+    "intid": 2027,
+    "filename": "Suspected-Golden-Ticket-usage-(nonexistent-account).json",
+    "description": "Attackers with domain admin rights can compromise the KRBTGT account. Using the KRBTGT account, they can create a Kerberos ticket granting ticket (TGT) that provides authorization to any resource and set the ticket expiration to any arbitrary time. This fake TGT is called a 'Golden Ticket' and allows attackers to achieve network persistence. In this detection, an alert is triggered by a nonexistent account.",
+    "created": "2022-05-01",
+    "severity": "high",
+    "fpratio": 0.1,
+    "tags": [
+        "Persistence",
+        "Priviledge Escalation",
+        "Lateral Movement"
+    ],
+    "references": [
+        "http://researchpapers.com/art/2022/03/research-on-keylogging.html"
+    ],
+    "detects": {
+        "T1558.001": {
+            "accuracy": "high"
+        },
+        "T1068": {
+            "accuracy": "medium"
+        },
+        "T1210": {
+            "accuracy": "medium"
+        }
+    },
+    "uses": [
+        "Network Traffic: Network Traffic Content"
+    ],
+    "scope": {
+        "countries": [
+            "Poland",
+            "Germany",
+            "China"
+        ],
+        "clients": [
+            "Client-A",
+            "Client-D"
+        ],
+        "systems": [
+            "windows",
+            "linux"
+        ]
+    }
+}

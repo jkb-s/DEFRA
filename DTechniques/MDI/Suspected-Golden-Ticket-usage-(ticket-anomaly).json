@@ -1,0 +1,43 @@
+{
+    "id": "D.MDI.2032",
+    "name": "Suspected Golden Ticket usage (ticket anomaly)",
+    "system": "Microsoft Defender for Identity",
+    "type": "Defense Technique",
+    "intid": 2032,
+    "filename": "Suspected-Golden-Ticket-usage-(ticket-anomaly).json",
+    "description": "Attackers with domain admin rights can compromise the KRBTGT account. Using the KRBTGT account, they can create a Kerberos ticket granting ticket (TGT) that provides authorization to any resource and set the ticket expiration to any arbitrary time. This fake TGT is called a 'Golden Ticket' and allows attackers to achieve network persistence. Forged Golden Tickets of this type have unique characteristics this detection is specifically designed to identify.",
+    "created": "2022-05-01",
+    "severity": "high",
+    "fpratio": 0.1,
+    "tags": [
+        "Persistence",
+        "Priviledge Escalation",
+        "Lateral Movement"
+    ],
+    "references": [
+        "http://researchpapers.com/art/2022/03/research-on-keylogging.html"
+    ],
+    "detects": {
+        "T1558.001": {
+            "accuracy": "high"
+        }
+    },
+    "uses": [
+        "Network Traffic: Network Traffic Content"
+    ],
+    "scope": {
+        "countries": [
+            "Poland",
+            "Germany",
+            "China"
+        ],
+        "clients": [
+            "Client-A",
+            "Client-D"
+        ],
+        "systems": [
+            "windows",
+            "linux"
+        ]
+    }
+}

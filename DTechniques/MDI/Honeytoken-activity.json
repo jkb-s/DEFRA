@@ -1,0 +1,42 @@
+{
+    "id": "D.MDI.2014",
+    "name": "Honeytoken activity",
+    "system": "Microsoft Defender for Identity",
+    "type": "Defense Technique",
+    "intid": 2014,
+    "filename": "Honeytoken-activity.json",
+    "description": "Honeytoken accounts are decoy accounts set up to identify and track malicious activity that involves these accounts. Honeytoken accounts should be left unused while having an attractive name to lure attackers (for example, SQL-Admin). Any activity from them might indicate malicious behavior.",
+    "created": "2022-05-01",
+    "severity": "high",
+    "fpratio": 0.3,
+    "tags": [
+        "Credential Access"
+    ],
+    "references": [
+        "http://researchpapers.com/art/2022/03/research-on-keylogging.html"
+    ],
+    "detects": {
+        "T1087.002": {
+            "accuracy": "high"
+        }
+    },
+    "uses": [
+        "Network Traffic: Network Traffic Content",
+        "Active Directory: Active Directory Object Access"
+    ],
+    "scope": {
+        "countries": [
+            "Poland",
+            "Germany",
+            "China"
+        ],
+        "clients": [
+            "Client-A",
+            "Client-D"
+        ],
+        "systems": [
+            "windows",
+            "linux"
+        ]
+    }
+}

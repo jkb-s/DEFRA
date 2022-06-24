@@ -1,0 +1,46 @@
+{
+    "id": "D.MDI.2030",
+    "name": "Data exfiltration over SMB",
+    "system": "Microsoft Defender for Identity",
+    "type": "Defense Technique",
+    "intid": 2030,
+    "filename": "Data-exfiltration-over-SMB.json",
+    "description": "Domain controllers hold the most sensitive organizational data. For most attackers, one of their top priorities is to gain domain controller access, to steal your most sensitive data. For example, exfiltration of the Ntds.dit file, stored on the DC, allows an attacker to forge Kerberos ticket granting tickets(TGT) providing authorization to any resource. Forged Kerberos TGTs enable the attacker to set the ticket expiration to any arbitrary time. A Defender for Identity Data exfiltration over SMB alert is triggered when suspicious transfers of data are observed from your monitored domain controllers.",
+    "created": "2022-05-01",
+    "severity": "high",
+    "fpratio": 0.1,
+    "tags": [
+        "Exfiltration",
+        "Lateral Movement",
+        "Command and Control"
+    ],
+    "references": [
+        "http://researchpapers.com/art/2022/03/research-on-keylogging.html"
+    ],
+    "detects": {
+        "T1048.003": {
+            "accuracy": "high"
+        },
+        "T1570": {
+            "accuracy": "high"
+        }
+    },
+    "uses": [
+        "Network Traffic: Network Traffic Flow"
+    ],
+    "scope": {
+        "countries": [
+            "Poland",
+            "Germany",
+            "China"
+        ],
+        "clients": [
+            "Client-A",
+            "Client-D"
+        ],
+        "systems": [
+            "windows",
+            "linux"
+        ]
+    }
+}

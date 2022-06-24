@@ -1,0 +1,42 @@
+{
+    "id": "D.MDI.2006",
+    "name": "Suspected DCSync attack (replication of directory services)",
+    "system": "Microsoft Defender for Identity",
+    "type": "Defense Technique",
+    "intid": 2006,
+    "filename": "Suspected-DCSync-attack-(replication-of-directory-services).json",
+    "description": "Active Directory replication is the process by which changes that are made on one domain controller are synchronized with all other domain controllers. Given necessary permissions, attackers can initiate a replication request, allowing them to retrieve the data stored in Active Directory, including password hashes. In this detection, an alert is triggered when a replication request is initiated from a computer that isn't a domain controller.",
+    "created": "2022-05-01",
+    "severity": "high",
+    "fpratio": 0.2,
+    "tags": [
+        "Credential Access",
+        "Persistence"
+    ],
+    "references": [
+        "http://researchpapers.com/art/2022/03/research-on-keylogging.html"
+    ],
+    "detects": {
+        "T1003.006": {
+            "accuracy": "high"
+        }
+    },
+    "uses": [
+        "Network Traffic: Network Traffic Content"
+    ],
+    "scope": {
+        "countries": [
+            "Poland",
+            "Germany",
+            "China"
+        ],
+        "clients": [
+            "Client-A",
+            "Client-D"
+        ],
+        "systems": [
+            "windows",
+            "linux"
+        ]
+    }
+}

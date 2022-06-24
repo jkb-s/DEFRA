@@ -1,0 +1,55 @@
+{
+    "id": "D.MDI.2031",
+    "name": "Suspicious communication over DNS",
+    "system": "Microsoft Defender for Identity",
+    "type": "Defense Technique",
+    "intid": 2031,
+    "filename": "Suspicious-communication-over-DNS.json",
+    "description": "The DNS protocol in most organizations is typically not monitored and rarely blocked for malicious activity. Enabling an attacker on a compromised machine, to abuse the DNS protocol. Malicious communication over DNS can be used for data exfiltration, command, and control, and/or evading corporate network restrictions.",
+    "created": "2022-05-01",
+    "severity": "high",
+    "fpratio": 0.1,
+    "tags": [
+        "Exfiltration",
+        "Lateral Movement",
+        "Command and Control"
+    ],
+    "references": [
+        "http://researchpapers.com/art/2022/03/research-on-keylogging.html"
+    ],
+    "detects": {
+        "T1048.003": {
+            "accuracy": "high"
+        },
+        "T1071.004": {
+            "accuracy": "high"
+        },
+        "T1041": {
+            "accuracy": "high"
+        },
+        "T1029": {
+            "accuracy": "high"
+        },
+        "T1020": {
+            "accuracy": "high"
+        }
+    },
+    "uses": [
+        "Network Traffic: Network Traffic Flow"
+    ],
+    "scope": {
+        "countries": [
+            "Poland",
+            "Germany",
+            "China"
+        ],
+        "clients": [
+            "Client-A",
+            "Client-D"
+        ],
+        "systems": [
+            "windows",
+            "linux"
+        ]
+    }
+}

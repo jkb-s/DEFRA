@@ -1,0 +1,41 @@
+{
+    "id": "D.MDI.2020",
+    "name": "Malicious request of Data Protection API master key",
+    "system": "Microsoft Defender for Identity",
+    "type": "Defense Technique",
+    "intid": 2020,
+    "filename": "Malicious-request-of-Data-Protection-API-master-key.json",
+    "description": "The Data Protection API (DPAPI) is used by Windows to securely protect passwords saved by browsers, encrypted files, and other sensitive data. Domain controllers hold a backup master key that can be used to decrypt all secrets encrypted with DPAPI on domain-joined Windows machines. Attackers can use the master key to decrypt any secrets protected by DPAPI on all domain-joined machines. In this detection, a Defender for Identity alert is triggered when the DPAPI is used to retrieve the backup master key.",
+    "created": "2022-05-01",
+    "severity": "high",
+    "fpratio": 0.5,
+    "tags": [
+        "Credential Access"
+    ],
+    "references": [
+        "http://researchpapers.com/art/2022/03/research-on-keylogging.html"
+    ],
+    "detects": {
+        "T1555": {
+            "accuracy": "medium"
+        }
+    },
+    "uses": [
+        "Network Traffic: Network Traffic Content"
+    ],
+    "scope": {
+        "countries": [
+            "Poland",
+            "Germany",
+            "China"
+        ],
+        "clients": [
+            "Client-A",
+            "Client-D"
+        ],
+        "systems": [
+            "windows",
+            "linux"
+        ]
+    }
+}

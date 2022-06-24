@@ -1,0 +1,41 @@
+{
+    "id": "D.MDI.2416",
+    "name": "Suspicious network connection over Encrypting File System Remote Protocol",
+    "system": "Microsoft Defender for Identity",
+    "type": "Defense Technique",
+    "intid": 2416,
+    "filename": "Suspicious-network-connection-over-Encrypting-File-System-Remote-Protocol.json",
+    "description": "Adversaries may exploit the Encrypting File System Remote Protocol to improperly perform privileged file operations. In this attack, the attacker can escalate privileges in an Active Directory network by coercing authentication from machine accounts and relaying to the certificate service. This attack allows an attacker to take over an Active Directory (AD) Domain by exploiting a flaw in the Encrypting File System Remote (EFSRPC) Protocol and chaining it with a flaw in Active Directory Certificate Services.",
+    "created": "2022-05-01",
+    "severity": "high",
+    "fpratio": 0.5,
+    "tags": [
+        "Lateral Movement"
+    ],
+    "references": [
+        "http://researchpapers.com/art/2022/03/research-on-keylogging.html"
+    ],
+    "detects": {
+        "T1210": {
+            "accuracy": "high"
+        }
+    },
+    "uses": [
+        "Network Traffic: Network Traffic Content"
+    ],
+    "scope": {
+        "countries": [
+            "Poland",
+            "Germany",
+            "China"
+        ],
+        "clients": [
+            "Client-A",
+            "Client-D"
+        ],
+        "systems": [
+            "windows",
+            "linux"
+        ]
+    }
+}

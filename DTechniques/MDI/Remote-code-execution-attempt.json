@@ -1,0 +1,45 @@
+{
+    "id": "D.MDI.2019",
+    "name": "Remote code execution attempt",
+    "system": "Microsoft Defender for Identity",
+    "type": "Defense Technique",
+    "intid": 2019,
+    "filename": "Remote-code-execution-attempt.json",
+    "description": "Attackers who compromise administrative credentials or use a zero-day exploit can execute remote commands on your domain controller or AD FS server. This can be used for gaining persistency, collecting information, denial of service (DOS) attacks or any other reason. Defender for Identity detects PSexec, Remote WMI, and PowerShell connections.",
+    "created": "2022-05-01",
+    "severity": "high",
+    "fpratio": 0.5,
+    "tags": [
+        "Execution",
+        "Lateral Movement"
+    ],
+    "references": [
+        "http://researchpapers.com/art/2022/03/research-on-keylogging.html"
+    ],
+    "detects": {
+        "T1059.001": {
+            "accuracy": "medium"
+        },
+        "T1021.006": {
+            "accuracy": "medium"
+        }
+    },
+    "uses": [
+        "Network Traffic: Network Traffic Content"
+    ],
+    "scope": {
+        "countries": [
+            "Poland",
+            "Germany",
+            "China"
+        ],
+        "clients": [
+            "Client-A",
+            "Client-D"
+        ],
+        "systems": [
+            "windows",
+            "linux"
+        ]
+    }
+}

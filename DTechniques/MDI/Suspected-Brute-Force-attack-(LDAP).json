@@ -1,0 +1,44 @@
+{
+    "id": "D.MDI.2004",
+    "name": "Suspected Brute Force attack (LDAP)",
+    "system": "Microsoft Defender for Identity",
+    "type": "Defense Technique",
+    "intid": 2004,
+    "filename": "Suspected-Brute-Force-attack-(LDAP).json",
+    "description": "In a brute-force attack, the attacker attempts to authenticate with many different passwords for different accounts until a correct password is found for at least one account. Once found, an attacker can log in using that account. In this detection, an alert is triggered when Defender for Identity detects a massive number of simple bind authentications. This alert detects brute force attacks performed either horizontally with a small set of passwords across many users, vertically with a large set of passwords on just a few users, or any combination of the two options. The alert is based on authentication events from sensors running on domain controller and AD FS servers.",
+    "created": "2022-05-01",
+    "severity": "medium",
+    "fpratio": 0.5,
+    "tags": [
+        "Credential Access"
+    ],
+    "references": [
+        "http://researchpapers.com/art/2022/03/research-on-keylogging.html"
+    ],
+    "detects": {
+        "T1110.001": {
+            "accuracy": "high"
+        },
+        "T1110.003": {
+            "accuracy": "high"
+        }
+    },
+    "uses": [
+        "Active Directory: Active Directory Credential Request"
+    ],
+    "scope": {
+        "countries": [
+            "Poland",
+            "Germany",
+            "China"
+        ],
+        "clients": [
+            "Client-A",
+            "Client-D"
+        ],
+        "systems": [
+            "windows",
+            "linux"
+        ]
+    }
+}

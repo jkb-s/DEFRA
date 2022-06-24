@@ -1,0 +1,54 @@
+{
+    "id": "D.MDI.2026",
+    "name": "Suspicious service creation",
+    "system": "Microsoft Defender for Identity",
+    "type": "Defense Technique",
+    "intid": 2026,
+    "filename": "Suspicious-service-creation.json",
+    "description": "A suspicious service has been created on a domain controller or AD FS server in your organization. This alert relies on event 7045 to identify this suspicious activity.",
+    "created": "2022-05-01",
+    "severity": "high",
+    "fpratio": 0.1,
+    "tags": [
+        "Execution",
+        "Persistence",
+        "Privilege Escalation",
+        "Defense Evasion",
+        "Lateral Movement"
+    ],
+    "references": [
+        "http://researchpapers.com/art/2022/03/research-on-keylogging.html"
+    ],
+    "detects": {
+        "T1569.002": {
+            "accuracy": "high"
+        },
+        "T1543.003": {
+            "accuracy": "high"
+        },
+        "T1021": {
+            "accuracy": "high"
+        },
+        "T1059": {
+            "accuracy": "high"
+        }
+    },
+    "uses": [
+        "Service: Service Creation"
+    ],
+    "scope": {
+        "countries": [
+            "Poland",
+            "Germany",
+            "China"
+        ],
+        "clients": [
+            "Client-A",
+            "Client-D"
+        ],
+        "systems": [
+            "windows",
+            "linux"
+        ]
+    }
+}

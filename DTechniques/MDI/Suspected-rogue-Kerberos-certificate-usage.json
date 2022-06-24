@@ -1,0 +1,43 @@
+{
+    "id": "D.MDI.2047",
+    "name": "Suspected rogue Kerberos certificate usage",
+    "system": "Microsoft Defender for Identity",
+    "type": "Defense Technique",
+    "intid": 2047,
+    "filename": "Suspected-rogue-Kerberos-certificate-usage.json",
+    "description": "Rogue certificate attack is a persistence technique used by attackers after gaining control over the organization. Attackers compromise the Certificate Authority (CA) server and generate certificates that can be used as backdoor accounts in future attacks.",
+    "created": "2022-05-01",
+    "severity": "high",
+    "fpratio": 0.5,
+    "tags": [
+        "Laterla Movement",
+        "Persistence",
+        "Priviledge Escalation"
+    ],
+    "references": [
+        "http://researchpapers.com/art/2022/03/research-on-keylogging.html"
+    ],
+    "detects": {
+        "T1550": {
+            "accuracy": "high"
+        }
+    },
+    "uses": [
+        "Network Traffic: Network Traffic Content"
+    ],
+    "scope": {
+        "countries": [
+            "Poland",
+            "Germany",
+            "China"
+        ],
+        "clients": [
+            "Client-A",
+            "Client-D"
+        ],
+        "systems": [
+            "windows",
+            "linux"
+        ]
+    }
+}

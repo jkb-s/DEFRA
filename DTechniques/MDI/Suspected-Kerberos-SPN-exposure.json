@@ -1,0 +1,41 @@
+{
+    "id": "D.MDI.2410",
+    "name": "Suspected Kerberos SPN exposure",
+    "system": "Microsoft Defender for Identity",
+    "type": "Defense Technique",
+    "intid": 2410,
+    "filename": "Suspected-Kerberos-SPN-exposure.json",
+    "description": "Attackers use tools to enumerate service accounts and their respective SPNs (Service principal names), request a Kerberos service ticket for the services, capture the Ticket Granting Service (TGS) tickets from memory and extract their hashes, and save them for later use in an offline brute force attack.",
+    "created": "2022-05-01",
+    "severity": "medium",
+    "fpratio": 0.5,
+    "tags": [
+        "Credential Access"
+    ],
+    "references": [
+        "http://researchpapers.com/art/2022/03/research-on-keylogging.html"
+    ],
+    "detects": {
+        "T1558.003": {
+            "accuracy": "high"
+        }
+    },
+    "uses": [
+        "Network Traffic: Network Traffic Content"
+    ],
+    "scope": {
+        "countries": [
+            "Poland",
+            "Germany",
+            "China"
+        ],
+        "clients": [
+            "Client-A",
+            "Client-D"
+        ],
+        "systems": [
+            "windows",
+            "linux"
+        ]
+    }
+}

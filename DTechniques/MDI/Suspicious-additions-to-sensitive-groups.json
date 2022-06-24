@@ -1,0 +1,45 @@
+{
+    "id": "D.MDI.2024",
+    "name": "Suspicious additions to sensitive groups",
+    "system": "Microsoft Defender for Identity",
+    "type": "Defense Technique",
+    "intid": 2024,
+    "filename": "Suspicious-additions-to-sensitive-groups.json",
+    "description": "Attackers add users to highly privileged groups. Adding users is done to gain access to more resources, and gain persistency. This detection relies on profiling the group modification activities of users, and alerting when an abnormal addition to a sensitive group is seen. Defender for Identity profiles continuously.",
+    "created": "2022-05-01",
+    "severity": "high",
+    "fpratio": 0.1,
+    "tags": [
+        "Persistence",
+        "Credential Access"
+    ],
+    "references": [
+        "http://researchpapers.com/art/2022/03/research-on-keylogging.html"
+    ],
+    "detects": {
+        "T1098": {
+            "accuracy": "high"
+        },
+        "T1484": {
+            "accuracy": "high"
+        }
+    },
+    "uses": [
+        "Active Directory: Active Directory Object Modification"
+    ],
+    "scope": {
+        "countries": [
+            "Poland",
+            "Germany",
+            "China"
+        ],
+        "clients": [
+            "Client-A",
+            "Client-D"
+        ],
+        "systems": [
+            "windows",
+            "linux"
+        ]
+    }
+}
