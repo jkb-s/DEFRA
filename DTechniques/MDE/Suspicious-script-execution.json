@@ -1,0 +1,35 @@
+{
+    "id": "D.MDE.2",
+    "name": "Suspicious script execution",
+    "system": "Microsoft Defender for Endpoint",
+    "type": "Defense Technique",
+    "intid": 2,
+    "filename": "Suspicious-script-execution.json",
+    "description": "",
+    "created": "2022-05-01",
+    "severity": "high",
+    "fpratio": 0.1,
+    "tags": [],
+    "references": [
+        "http://researchpapers.com/art/2022/03/research-on-keylogging.html"
+    ],
+    "detects": {},
+    "uses": [
+        "Process: Process Creation"
+    ],
+    "scope": {
+        "countries": [
+            "Poland",
+            "Germany",
+            "China"
+        ],
+        "clients": [
+            "Client-A",
+            "Client-D"
+        ],
+        "systems": [
+            "windows",
+            "linux"
+        ]
+    }
+}

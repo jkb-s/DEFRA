@@ -1,0 +1,34 @@
+{
+    "id": "D.MDO.1",
+    "name": "Email messages containing malicious file removed after delivery",
+    "system": "Microsoft Defender for Office 365",
+    "type": "Defense Technique",
+    "intid": 1,
+    "filename": "Email-messages-containing-malicious-file-removed-after-delivery.json",
+    "description": "",
+    "created": "2022-05-01",
+    "severity": "high",
+    "fpratio": 0.1,
+    "tags": [],
+    "references": [
+        "http://researchpapers.com/art/2022/03/research-on-keylogging.html"
+    ],
+    "detects": {},
+    "uses": [
+        "Process: Process Creation"
+    ],
+    "scope": {
+        "countries": [
+            "Poland",
+            "Germany",
+            "China"
+        ],
+        "clients": [
+            "Client-A",
+            "Client-D"
+        ],
+        "systems": [
+            "windows"
+        ]
+    }
+}
