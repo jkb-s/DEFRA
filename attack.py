@@ -17,6 +17,12 @@ class ATechnique:
     references: list = field(default_factory=list)
     ref: str = ""
     
+    def get_parent(self):
+        if '.' in self.id:
+            return self.id.split('.')[0]
+        else:
+            return None
+
 @dataclass
 class ARelation:
     source : str
