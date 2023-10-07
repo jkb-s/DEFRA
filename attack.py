@@ -81,6 +81,9 @@ class Attack:
             if ref['source_name'] == 'mitre-attack':
                 return ref['external_id']
         return None
+    
+    def get_name_by_id(self, id):
+        return self.techniques[id].name
 
     def __init__(self, version=None, save=False, local=False):
         self.load_config()                         # creates self.cfg
@@ -121,7 +124,7 @@ class Attack:
 
     def load_attack(self):
         filename = self.cfg.attack_filename
-        with open(filename, 'r') as file:
+        with open(filename, 'r', encoding='utf-8') as file:
             self.attack = loads(file.read())
             file.close()
 
