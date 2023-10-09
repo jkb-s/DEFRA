@@ -29,5 +29,29 @@
          "impact"
     ],
     "defend_systems": "DSystems",
-    "defend_techniques": "DTechniques"
+    "defend_techniques": "DTechniques",
+    "graph": {
+        "tactic": {
+            "mass": 100,
+            "size": 100,
+            "color": "#C00"
+        },
+        "technique": {
+            "mass": 50,
+            "size": 50,
+            "color": "#C77"
+        },
+        "subtechnique": {
+            "mass": 5,
+            "size": 20,
+            "color": "#A66"
+        },
+        "severity_colors": {
+            "critical": "#E76EFA",
+            "high": "#AB62DE",
+            "medium": "#9E77F5",
+            "low": "#6762DE",
+            "informational": "#FFF"
+        }
+    }
 }
