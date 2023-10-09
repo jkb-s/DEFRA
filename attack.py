@@ -107,6 +107,7 @@ class Attack:
         self.parse_data_components()
         self.parse_mitigations()
         self.make_indices()
+        self.generate_hierarchical_index() # tactic -> {technique -> {subtechnique}}
 
         if save:
             self.save_attack()
