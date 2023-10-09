@@ -484,6 +484,23 @@ class Attack:
             for dc in self.techniques_by_data_component:
                 if tech in self.techniques_by_data_component[dc]:
                     self.data_components_by_technique[tech].add(dc)
+
+    def generate_hierarchical_index(self):
+        self.hierarchical_index = {}
+        for tac in self.cfg.tactics_order:
+            self.hierarchical_index.update({tac: {}})
+            
+        for tech in self.techniques:
+            if "." not in tech:
+                tac = self.techniques[tech].tactics[0]
+                self.hierarchical_index[tac].update({tech: []})
+
+        for tech in self.techniques:
+            if "." in tech:
+                parent = tech.split('.')[0]
+                parent_tac = self.techniques[parent].tactics[0]
+                self.hierarchical_index[parent_tac][parent].append(tech)
+        
                     
 class OldAttack:
     
