@@ -2,6 +2,7 @@ from json import loads, dumps
 from types import SimpleNamespace
 from dataclasses import dataclass, field
 from os import path, walk
+import math
 
 
 class JSON:
@@ -180,3 +181,20 @@ class Defend:
                     else:
                         self.techniques_per_datasource[data_source][data_component].append(dtech)
 
+    @staticmethod
+    def get_coords(radius, x, y, minresults):
+        coords = []
+        stepSize = 6.0 # Start from huge parameter to find optimal numner of points arround a circle
+        while len(coords) < minresults:
+            coords = Defend.get_circle(radius, x, y, stepSize)
+            stepSize -= 0.01 # GET DOWN, but gently ;)
+        return coords
+    
+    @staticmethod
+    def get_circle(radius, x, y, stepSize=6.0):
+        coords = []
+        t = 0
+        while t < 2 * math.pi:
+            coords.append((radius * math.cos(t) + x, radius * math.sin(t) + y))
+            t += stepSize
+        return coords
