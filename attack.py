@@ -494,14 +494,29 @@ class Attack:
         for tech in self.techniques:
             if "." not in tech:
                 tac = self.techniques[tech].tactics[0]
+                # Balancing defense evasion
+                if tac == 'defense-evasion' and len(self.techniques[tech].tactics) > 1:
+                    tac = self.techniques[tech].tactics[1]
+
                 self.hierarchical_index[tac].update({tech: []})
 
         for tech in self.techniques:
             if "." in tech:
                 parent = tech.split('.')[0]
                 parent_tac = self.techniques[parent].tactics[0]
+                # Balancing defense evasion
+                if parent_tac == 'defense-evasion' and len(self.techniques[parent].tactics) > 1:
+                    parent_tac = self.techniques[parent].tactics[1]
                 self.hierarchical_index[parent_tac][parent].append(tech)
         
+    def find_tactic_in_hirarchical_index(self, technique):
+        for tac in self.hierarchical_index:
+            for tech in self.hierarchical_index[tac]:
+                if tech == technique:
+                    return tac
+                for subtech in self.hierarchical_index[tac][tech]:
+                    if subtech == technique:
+                        return tac
                     
 class OldAttack:
     
