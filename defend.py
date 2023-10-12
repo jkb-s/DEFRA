@@ -198,3 +198,19 @@ class Defend:
             coords.append((radius * math.cos(t) + x, radius * math.sin(t) + y))
             t += stepSize
         return coords
+    
+    @staticmethod
+    def find_closest_point(destination, circle, taken):
+        closest = None
+        closest_val = None
+        for pos in circle:
+            if pos not in taken:
+                dist = math.dist(destination, pos)
+                if not closest_val:
+                    closest_val = dist
+                    closest = pos
+                else:
+                    if closest_val > dist:
+                        closest_val = dist
+                        closest = pos
+        return closest
