@@ -509,7 +509,7 @@ class Attack:
                     parent_tac = self.techniques[parent].tactics[1]
                 self.hierarchical_index[parent_tac][parent].append(tech)
         
-    def find_tactic_in_hirarchical_index(self, technique):
+    def find_tactic_in_hierarchical_index(self, technique):
         for tac in self.hierarchical_index:
             for tech in self.hierarchical_index[tac]:
                 if tech == technique:
