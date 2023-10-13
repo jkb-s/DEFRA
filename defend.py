@@ -2,6 +2,7 @@ from json import loads, dumps
 from types import SimpleNamespace
 from dataclasses import dataclass, field
 from os import path, walk
+from pyvis.network import Network
 import math
 
 
@@ -214,3 +215,27 @@ class Defend:
                         closest_val = dist
                         closest = pos
         return closest
+
+    @staticmethod
+    def get_square_coordinates(x, y, distance):        
+        return [
+            [x,y], [x,y+distance], [x+distance, y], [x+distance, y+distance]
+        ]
+
+    @staticmethod
+    def get_tactics_line_coordinates(x=0, y=0, distance=1000):
+        coords = []
+        a = 0
+        while a < 5:
+            tmp = Defend.get_square_coordinates(x, y, distance)
+            x = x + distance + distance
+            coords.extend(tmp)
+            a += 1
+
+        coords.pop(2)  # Space after PRE
+        coords.pop(2)  # Space after PRE
+        coords.pop(-1) # No need
+        coords.pop(-1) # No need
+        coords.pop(-5) # Space before high impact tac
+        coords.pop(-5) # Space before high impact tac
+        return coords
