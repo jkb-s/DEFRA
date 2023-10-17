@@ -1,0 +1,32 @@
+{
+    "id": "M.POL.1",
+    "name": "Network segmentation policy",
+    "source": "Network Department",
+    "type": "Mitigation",
+    "intid": 1,
+    "filename": "Network-segmentation-policy.json",
+    "description": "",
+    "created": "2023-05-01",
+    "severity": "high",
+    "failspercent": 10,
+    "tags": [],
+    "references": [
+        "https://attack.mitre.org/mitigations/M1030/"
+    ],
+    "implements": {
+        "M1030": {
+            "accuracy": "high"
+        }
+    },
+    "scope": {
+        "countries": [
+            "Poland",
+            "Germany",
+            "Denmark"
+        ],
+        "clients": [
+            "Client-C",
+            "Client-D"
+        ]
+    }
+}
