@@ -2,6 +2,8 @@ from json import loads, dumps
 from types import SimpleNamespace
 from dataclasses import dataclass, field
 from os import path, walk
+from pyvis.network import Network
+import math
 
 
 class JSON:
@@ -180,3 +182,60 @@ class Defend:
                     else:
                         self.techniques_per_datasource[data_source][data_component].append(dtech)
 
+    @staticmethod
+    def get_coords(radius, x, y, minresults):
+        coords = []
+        stepSize = 6.0 # Start from huge parameter to find optimal numner of points arround a circle
+        while len(coords) < minresults:
+            coords = Defend.get_circle(radius, x, y, stepSize)
+            stepSize -= 0.01 # GET DOWN, but gently ;)
+        return coords
+    
+    @staticmethod
+    def get_circle(radius, x, y, stepSize=6.0):
+        coords = []
+        t = 0
+        while t < 2 * math.pi:
+            coords.append((radius * math.cos(t) + x, radius * math.sin(t) + y))
+            t += stepSize
+        return coords
+    
+    @staticmethod
+    def find_closest_point(destination, circle, taken):
+        closest = None
+        closest_val = None
+        for pos in circle:
+            if pos not in taken:
+                dist = math.dist(destination, pos)
+                if not closest_val:
+                    closest_val = dist
+                    closest = pos
+                else:
+                    if closest_val > dist:
+                        closest_val = dist
+                        closest = pos
+        return closest
+
+    @staticmethod
+    def get_square_coordinates(x, y, distance):        
+        return [
+            [x,y], [x,y+distance], [x+distance, y], [x+distance, y+distance]
+        ]
+
+    @staticmethod
+    def get_tactics_line_coordinates(x=0, y=0, distance=1000):
+        coords = []
+        a = 0
+        while a < 5:
+            tmp = Defend.get_square_coordinates(x, y, distance)
+            x = x + distance + distance
+            coords.extend(tmp)
+            a += 1
+
+        coords.pop(2)  # Space after PRE
+        coords.pop(2)  # Space after PRE
+        coords.pop(-1) # No need
+        coords.pop(-1) # No need
+        coords.pop(-5) # Space before high impact tac
+        coords.pop(-5) # Space before high impact tac
+        return coords

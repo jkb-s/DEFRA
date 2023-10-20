@@ -17,6 +17,12 @@ class ATechnique:
     references: list = field(default_factory=list)
     ref: str = ""
     
+    def get_parent(self):
+        if '.' in self.id:
+            return self.id.split('.')[0]
+        else:
+            return None
+
 @dataclass
 class ARelation:
     source : str
@@ -75,6 +81,9 @@ class Attack:
             if ref['source_name'] == 'mitre-attack':
                 return ref['external_id']
         return None
+    
+    def get_name_by_id(self, id):
+        return self.techniques[id].name
 
     def __init__(self, version=None, save=False, local=False):
         self.load_config()                         # creates self.cfg
@@ -98,6 +107,7 @@ class Attack:
         self.parse_data_components()
         self.parse_mitigations()
         self.make_indices()
+        self.generate_hierarchical_index() # tactic -> {technique -> {subtechnique}}
 
         if save:
             self.save_attack()
@@ -115,7 +125,7 @@ class Attack:
 
     def load_attack(self):
         filename = self.cfg.attack_filename
-        with open(filename, 'r') as file:
+        with open(filename, 'r', encoding='utf-8') as file:
             self.attack = loads(file.read())
             file.close()
 
@@ -475,6 +485,38 @@ class Attack:
             for dc in self.techniques_by_data_component:
                 if tech in self.techniques_by_data_component[dc]:
                     self.data_components_by_technique[tech].add(dc)
+
+    def generate_hierarchical_index(self):
+        self.hierarchical_index = {}
+        for tac in self.cfg.tactics_order:
+            self.hierarchical_index.update({tac: {}})
+            
+        for tech in self.techniques:
+            if "." not in tech:
+                tac = self.techniques[tech].tactics[0]
+                # Balancing defense evasion
+                if tac == 'defense-evasion' and len(self.techniques[tech].tactics) > 1:
+                    tac = self.techniques[tech].tactics[1]
+
+                self.hierarchical_index[tac].update({tech: []})
+
+        for tech in self.techniques:
+            if "." in tech:
+                parent = tech.split('.')[0]
+                parent_tac = self.techniques[parent].tactics[0]
+                # Balancing defense evasion
+                if parent_tac == 'defense-evasion' and len(self.techniques[parent].tactics) > 1:
+                    parent_tac = self.techniques[parent].tactics[1]
+                self.hierarchical_index[parent_tac][parent].append(tech)
+        
+    def find_tactic_in_hierarchical_index(self, technique):
+        for tac in self.hierarchical_index:
+            for tech in self.hierarchical_index[tac]:
+                if tech == technique:
+                    return tac
+                for subtech in self.hierarchical_index[tac][tech]:
+                    if subtech == technique:
+                        return tac
                     
 class OldAttack:
     
