@@ -1,6 +1,8 @@
 
 # DEFRA
 
+![Top](ScreenShots/sigma.png "Graph from DEFRA")
+
 ## 1. Name
 The name DEFRA is a simple shorthand for DEfense FRAmework, thus should be pronouced *dē-fra*. 
 
