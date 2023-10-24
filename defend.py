@@ -1,7 +1,7 @@
 from json import loads, dumps
 from types import SimpleNamespace
 from dataclasses import dataclass, field
-from os import path, walk
+from os import path, walk, makedirs
 
 
 class JSON:
@@ -37,6 +37,9 @@ class DTechnique(JSON):
             self.filename = self.name.replace(' ', '-').replace('\\', '').replace('/', '') + ".json"
         
     def write(self, parentpath):
+        dir = path.join(parentpath, self.id.split('.')[1])
+        if not path.exists(dir):
+            makedirs(dir)
         filepath = path.join(parentpath, self.id.split('.')[1], self.filename)
         with open(filepath, 'w+') as file:
             file.write(dumps(self.__dict__, indent=4))
