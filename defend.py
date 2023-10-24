@@ -76,6 +76,7 @@ class Defend:
 
     def __init__(self, attack):
         self.attack = attack
+        self.cfg = attack.cfg
 
         # init functions
         self.load_defense_systems()                       # self.systems
