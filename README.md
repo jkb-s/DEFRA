@@ -33,6 +33,62 @@ The name DEFRA is a simple shorthand for DEfense FRAmework, thus should be prono
 - DSystems - here defense systems metadata should be placed
 - DTechniques - defense techniques, each in separate json file, should be under this directory. They can be additionally divided into subdirectories. 
 
+## 3. Defense Technique file structure
+
+```json
+{
+    "id": "D.MDI.2210",
+    "name": "Active Directory attributes reconnaissance (LDAP)",
+    "system": "Microsoft Defender for Identity",
+    "type": "Defense Technique",
+    "intid": 2210,
+    "filename": "Active-Directory-attributes-reconnaissance-(LDAP).json",
+    "description": "",
+    "created": "2022-05-01",
+    "severity": "medium",
+    "fpratio": 0.3,
+    "tags": [
+        "DEV: ",
+        "Discovery"
+    ],
+    "references": [],
+    "detects": {
+        "T1087.002": {
+            "accuracy": "medium"
+        },
+        "T1069.002": {
+            "accuracy": "medium"
+        }
+    },
+    "uses": [
+        "Active Directory: Active Directory Object Access"
+    ],
+    "scope": {
+        "countries": [
+            "Poland",
+            "Germany",
+            "China"
+        ],
+        "clients": [
+            "Client-A",
+            "Client-D"
+        ],
+        "systems": [
+            "windows",
+            "linux"
+        ]
+    }
+}
+```
+
+<dl>
+  <dt>ID</dt>
+  <dd>Has to be unique and contain defense system namespace indicator. System namespace if follwed by an ID that is unique within this system. Defesene techniques from MDI will have and ID `D.MDI.X` where X is an integer.</dd>
+    <br>
+  <dt></dt>
+  <dd>Does *not* work **very** well. Use HTML <em>tags</em>.</dd>
+</dl>
+
 ## 3. Initialization
 
 ```python
@@ -74,7 +130,7 @@ T1027.name
 > 'Obfuscated Files or Information'
 ```
 
-There are multiple handy indexes that are calulated during the initialization:
+There are multiple handy indices that are calulated during the initialization:
 - de.attack.data_components_by_technique 
     ```python
     de.attack.data_components_by_technique['T1027.011']
@@ -136,3 +192,39 @@ for tech in de.techniques['D.MDI.2036'].detects:
 > T1068      Accuracy: medium     Exploitation for Privilege Escalation
 ```
 
+Additional indices:
+
+- de.techniques_per_attack_techniques
+- de.techniques_per_datasource
+- de.techniques_per_system
+- de.techniques_per_severity
+- de.techniques_per_scope
+
+
+
+    ```json
+    de.techniques_per_scope
+    > {
+        "countries": {
+            "Germany": [
+                "D.AV.1", "D.EDR.1"
+            ],
+            "Turkey": [
+                "D.AV.1"
+            ]
+        },
+        "clients": {
+            "Client-E": [
+                "D.AV.1", "D.EDR.2", "D.ELSTC.1"
+            ]
+        },
+        "systems": {
+            "windows": [
+                "D.AV.1", "D.CHKPNT.1"
+            ],
+            "linux": [
+                "D.CHKPNT.1", "D.EDR.1"
+            ]
+        } 
+    }
+    ```
