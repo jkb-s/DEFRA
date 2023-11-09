@@ -1,9 +1,10 @@
 from json import loads, dumps
 from types import SimpleNamespace
 from dataclasses import dataclass, field
-from os import path, walk
+from os import path, walk, makedirs
 from pyvis.network import Network
 import math
+
 
 
 class JSON:
@@ -39,6 +40,9 @@ class DTechnique(JSON):
             self.filename = self.name.replace(' ', '-').replace('\\', '').replace('/', '') + ".json"
         
     def write(self, parentpath):
+        dir = path.join(parentpath, self.id.split('.')[1])
+        if not path.exists(dir):
+            makedirs(dir)
         filepath = path.join(parentpath, self.id.split('.')[1], self.filename)
         with open(filepath, 'w+') as file:
             file.write(dumps(self.__dict__, indent=4))
@@ -75,6 +79,7 @@ class Defend:
 
     def __init__(self, attack):
         self.attack = attack
+        self.cfg = attack.cfg
 
         # init functions
         self.load_defense_systems()                       # self.systems
