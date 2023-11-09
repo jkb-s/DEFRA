@@ -2,6 +2,8 @@ from json import loads, dumps
 from requests import get
 from types import SimpleNamespace
 from dataclasses import dataclass, field
+from dateutil import parser
+from datetime import datetime
 
 @dataclass
 class ATechnique:
@@ -178,6 +180,7 @@ class Attack:
             }
 
             atech = ATechnique(**tech)
+            atech.modified = parser.parse(obj['modified'])
             self.techniques.update({
                 id: atech
             })
