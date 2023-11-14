@@ -2,9 +2,14 @@ from json import loads, dumps
 from types import SimpleNamespace
 from dataclasses import dataclass, field
 from os import path, walk, makedirs
+<<<<<<< HEAD
+from datetime import datetime
+from dateutil import parser
+=======
 from pyvis.network import Network
 import math
 
+>>>>>>> 884a30029fd03440eb2d80d04929b0ef2f653d0b
 
 
 class JSON:
@@ -24,7 +29,7 @@ class DTechnique(JSON):
     intid: int = None
     filename: str = None
     description: str = ""
-    created: str = ""
+    created: datetime = None
     severity: str = ""
     fpratio: float = None
     tags: list = field(default_factory=list)
@@ -48,6 +53,13 @@ class DTechnique(JSON):
             file.write(dumps(self.__dict__, indent=4))
             file.close()
 
+    def core(self):
+        core_data = {}
+        for key in ['id', 'name', 'description', 'created', 'severity', 'fpratio']:
+            core_data.update({
+                key: self.__dict__[key]
+            })
+        return core_data
 
     
 @dataclass
@@ -114,6 +126,7 @@ class Defend:
                     with open(filename, 'r') as fobj:
                         data = loads(fobj.read())
                         fobj.close()
+                        data['created'] = parser.parse(data['created'])
                         self.techniques.update({
                             data['id']: DTechnique(**data)
                         })
