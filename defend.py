@@ -2,14 +2,11 @@ from json import loads, dumps
 from types import SimpleNamespace
 from dataclasses import dataclass, field
 from os import path, walk, makedirs
-<<<<<<< HEAD
 from datetime import datetime
 from dateutil import parser
-=======
 from pyvis.network import Network
 import math
 
->>>>>>> 884a30029fd03440eb2d80d04929b0ef2f653d0b
 
 
 class JSON:
