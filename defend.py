@@ -6,6 +6,8 @@ from datetime import datetime
 from dateutil import parser
 from pyvis.network import Network
 import math
+import plotly.express as px
+from pandas import DataFrame as DF
 
 
 
@@ -196,6 +198,33 @@ class Defend:
                         })
                     else:
                         self.techniques_per_datasource[data_source][data_component].append(dtech)
+
+    def chart_attack_techniques_per_tactic(self):
+
+        records = {}
+        for tac in self.cfg.tactics_order:
+            records.update({tac: 0})
+        
+        for tech in self.attack.techniques:
+            for tac in self.attack.techniques[tech].tactics:
+                records[tac] += 1
+
+        records_arr = []
+        for tac in records:
+            records_arr.append({'tactic': tac, 'techniques count': records[tac]})
+
+        df = DF.from_records(records_arr)
+
+        
+
+        fig = px.bar(df, 
+                    x='tactic', y='techniques count', 
+                    color='techniques count', 
+                    text='techniques count', 
+                    title='ATT&CK Techniques count per tactic', log_y=False,
+                    height=400, color_continuous_scale='Reds')
+        
+        fig.write_html('./charts/techniques_count_per_tactic.html')
 
     @staticmethod
     def get_coords(radius, x, y, minresults):
