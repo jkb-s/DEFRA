@@ -226,6 +226,34 @@ class Defend:
         
         fig.write_html('./charts/techniques_count_per_tactic.html')
 
+    def chart_defense_techniques_per_tactic(self):
+        records = {}
+        for tac in self.cfg.tactics_order:
+            records.update({
+                tac: 0
+            })
+        
+        for dt in self.techniques:
+            dtech = self.techniques[dt]
+            for tech in dtech.detects:
+                tac = self.attack.techniques[tech].tactics[0]
+                records[tac] += 1
+        
+        records_arr = []
+        for tac in records:
+            records_arr.append({'tactic': tac, 'defense techniques count': records[tac]})
+        
+        df = DF.from_records(records_arr)
+        
+        fig = px.bar(df, 
+                    x='tactic', y='defense techniques count', 
+                    color='defense techniques count', 
+                    text='defense techniques count', 
+                    title='Defense techniques count per tactic', log_y=False,
+                    height=400, color_continuous_scale='Blues')
+        
+        fig.write_html('./charts/defense_techniques_count_per_tactic.html')
+
     @staticmethod
     def get_coords(radius, x, y, minresults):
         coords = []
